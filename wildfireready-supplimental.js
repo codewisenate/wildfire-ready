@@ -203,6 +203,10 @@ const domReady = () => {
 			// Observe changes in the open attribute of the dialog element
 			observer.observe(dialog, { attributes: true });
 		}
+
+		if(openModalTranscriptBtn) {
+			// deal with transcript
+		}
 	}, 0);
 };
 
