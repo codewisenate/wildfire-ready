@@ -12,6 +12,10 @@ const domReady = () => {
 		const landingAreaVideo = document.querySelector('.wp-block-cover__video-background');
 		let wasLandingAreaVideoPlaying = true;
 
+		if (landingAreaVideo) {
+			landingAreaVideo.setAttribute('tabindex', '-1');
+		}
+
 		/**
 		 * Create a modal dialog with a video element
 		 * @param {string} videoSrc - The source URL for the video
@@ -32,7 +36,7 @@ const domReady = () => {
 
 			const message = document.createElement('div');
 			message.id = 'message';
-			message.innerText = 'Click anywhere or press ESCAPE to close.';
+			message.innerText = 'Click outside video or press ESCAPE to close.';
 
 			video.appendChild(source);
 			dialog.appendChild(video);
@@ -141,18 +145,24 @@ const domReady = () => {
 			};
 
 			/**
-			 * Handle key press events to close the modal on Escape key press
+			 * Handle escape key press events to close the modal
 			 * @param {KeyboardEvent} event - The keyboard event object
 			 */
-			const handleKeyPress = (event) => {
+			const handleDialogEscKeyPress = (event) => {
 				if (event.key === 'Escape') closeModal();
 			};
 
 			openModalVideoBtn.setAttribute('role', 'button');
 			
 			openModalVideoBtn.addEventListener('click', openModal);
+			openModalVideoBtn.addEventListener('keydown', (e) => {
+				if (e.key === ' ' || e.key === 'Enter') {
+					e.preventDefault();
+					openModalVideoBtn.click();
+				}
+			});
 			dialog.addEventListener('click', closeModal);
-			document.addEventListener('keydown', handleKeyPress);
+			document.addEventListener('keydown', handleDialogEscKeyPress);
 
 			const observer = new MutationObserver((mutations) => {
 				mutations.forEach((mutation) => {
@@ -205,6 +215,13 @@ const domReady = () => {
 						wasLandingAreaVideoPlaying = false;
 					}
 				});
+
+				bgPlayPauseBtn.addEventListener('keydown', (e) => {
+					if (e.key === ' ' || e.key === 'Enter') {
+						e.preventDefault();
+						bgPlayPauseBtn.click();
+					}
+				});
 			}
 		}
 
@@ -229,6 +246,13 @@ const domReady = () => {
 					setTimeout(function () {
 						document.querySelector('#transcript-content').scrollIntoView({ behavior: 'smooth' });
 					}, 0);
+				}
+			});
+
+			openTranscriptBtn.addEventListener('keydown', (e) => {
+				if (e.key === ' ' || e.key === 'Enter') {
+					e.preventDefault();
+					openTranscriptBtn.click();
 				}
 			});
 		}

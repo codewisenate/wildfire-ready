@@ -132,7 +132,7 @@ body.custom-wfr:not(body.wp-admin):not(body.editor-styles-wrapper):not(body.erro
 
 /* #alert-notification-banner a::after {
 	box-sizing: border-box;
-	content: " →";
+	content: " ";
 	text-decoration: none;
 	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 } */
@@ -158,6 +158,20 @@ body.custom-wfr:not(body.wp-admin):not(body.editor-styles-wrapper):not(body.erro
 
 #landing-area #bgPlayPause a span {
 	font-size: 0;
+}
+
+#landing-area .get-started a::after {
+	content: " ";
+	background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1NS45LDM3MC40bDE3LTE3LDE2MC0xNTkuOSwxNy0xNy0zNC0zMy45LTE3LDE3LTE0MywxNDNMMTEyLjksMTU5LjVsLTE3LTE3LTMzLjksMzQsMTcsMTcsMTU5LjksMTYwLDE3LDE3aDBaIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	position: relative;
+	top: 0.33rem;
+	left: 0.5rem;
 }
 
 #landing-area #bgPlayPause a::after {
