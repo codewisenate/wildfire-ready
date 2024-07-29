@@ -161,6 +161,7 @@ const domReady = () => {
 					openModalVideoBtn.click();
 				}
 			});
+			
 			dialog.addEventListener('click', closeModal);
 			document.addEventListener('keydown', handleDialogEscKeyPress);
 
